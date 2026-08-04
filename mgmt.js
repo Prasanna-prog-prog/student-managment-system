@@ -8,7 +8,6 @@ const student = document.getElementById("studentContainer");
 button.addEventListener("click" ,myFunc);
 
 function myFunc(){
-
 let userName = NameInput.value;
 let userdept = DeptInput.value;
 let userNum = numberInput.value;
