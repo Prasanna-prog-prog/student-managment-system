@@ -5,9 +5,16 @@ const button=document.getElementById("addbtn");
 const student = document.getElementById("studentContainer");
 
 
+let total = 0;
+function updateTotal(){
+    document.getElementById("Total").innerHTML = "Total : " + total;
+}
+
+
 button.addEventListener("click" ,myFunc);
 
 function myFunc(){
+
 let userName = NameInput.value;
 let userdept = DeptInput.value;
 let userNum = numberInput.value;
@@ -23,32 +30,51 @@ li.textContent = "NAME : " + userName + "\n"  +
 "ROLL.NO : " + userNum;
 student.appendChild(li);
 
+li.style.display = "flex";
+li.style.alignItems = "center";
+li.style.gap = "10px";
+
 let del=document.createElement("button");
 del.type="button";
-del.innerText = "Delete";
+del.innerText = "Delete"
 
+li.appendChild(del);
+del.onclick = function(){
+    li.remove();
+    total--;
+    updateTotal();
+};
+
+total++;
+updateTotal();
+
+let editLi = null;
 
 let edit = document.createElement("button");
 edit.type="button";
 edit.innerText="Edit";
 
+li.appendChild(edit);
+
+edit.onclick = function(){
+    NameInput.value = userName;
+    DeptInput.value = userdept;
+    numberInput.value = userNum;
+
+    editLi = li;
+    button.innerText = "Update";
+}
 
 
-let btnDiv = document.createElement("div");
-btnDiv.style.marginTop = "10px";
-btnDiv.style.display = "flex";
-btnDiv.style.gap = "10px";
 
-btnDiv.appendChild(del);
-btnDiv.appendChild(edit);
-
-li.appendChild(btnDiv);
 
 
 
 NameInput.value="";
 DeptInput.value="";
 numberInput.value="";
+
+
 }
 
 //-1) first when user clcik on add student btn, it should weather 
