@@ -48,6 +48,19 @@ del.onclick = function(){
 total++;
 updateTotal();
 
+del.addEventListener("click", function(){
+    let choice = confirm("Are you sure you want to delete this student ?")
+if(choice){
+    student.remove(li);
+    total--;
+    count.textContent = total;
+}
+
+
+
+});
+
+
 let editLi = null;
 
 let edit = document.createElement("button");
@@ -62,8 +75,12 @@ edit.onclick = function(){
     numberInput.value = userNum;
 
     editLi = li;
-    button.innerText = "Update";
+   
+
+    button.innerText = "Add Student";
 }
+
+
 
 
 
@@ -76,6 +93,7 @@ numberInput.value="";
 
 
 }
+
 
 //-1) first when user clcik on add student btn, it should weather 
 //all input values are non empty if non empty add to studentlist else pop up a msg called add complete details.
